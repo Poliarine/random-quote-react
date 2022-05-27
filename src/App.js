@@ -7,6 +7,7 @@ function App() {
   const [randomAuthor, setRandomAuthor] = useState([]);
 
   useEffect((props) => {
+    
     fetch("https://type.fit/api/quotes")
       .then(function (response) {
         return response.json();        
@@ -21,18 +22,16 @@ function App() {
         console.log(randomQ);
         console.log(randomA);
         
-        setRandomQuote(props.text.value)
-        setRandomAuthor(props.target.value)
+        //  setRandomQuote(randomQ)
+        //  setRandomAuthor(randomA)
       });
   }, [randomQuote, randomAuthor]);
 
  
-  let handleClick = (event) => {
-    //const randomQuoteGet = quotes[Math.floor(Math.random()*quotes.length)];
-    //var joke = jokes[Math.floor(Math.random()*jokes.length)];
-    setRandomQuote('"Genius is one percent inspiration and ninety-nine percent perspiration."')
-    setRandomAuthor('Thomas Edison');
-  };
+  // let handleClick = (props) => {
+  //   setRandomQuote(props.randomQuoteGet.text)
+  //   setRandomAuthor(props.randomQuoteGet.author);
+  // };
 
   return (
     <div class="wrapper" id="quote-box" className="App">
@@ -50,7 +49,8 @@ function App() {
         <a id="social-quote" href="www">
           Social media
         </a>
-        <Button onClick={handleClick} id="new-quote">
+        <Button //onClick={handleClick} 
+        id="new-quote">
           New quote
         </Button>
       </div>
