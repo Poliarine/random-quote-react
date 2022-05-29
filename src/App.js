@@ -6,32 +6,45 @@ function App() {
   const [randomQuote, setRandomQuote] = useState([]);
   const [randomAuthor, setRandomAuthor] = useState([]);
 
-  useEffect((props) => {
+  // useEffect((props) => {
     
+  //   fetch("https://type.fit/api/quotes")
+  //     .then(function (response) {
+  //       return response.json();        
+  //     })
+  //     .then(function (quotes) {
+  //       const randomQuoteGet = quotes[Math.floor(Math.random()*quotes.length)];
+  //       console.log(randomQuoteGet);
+
+  //       let randomQ = randomQuoteGet.text;
+  //       let randomA = randomQuoteGet.author;
+        
+  //       console.log(randomQ);
+  //       console.log(randomA);
+        
+  //       //  setRandomQuote(randomQ)
+  //       //  setRandomAuthor(randomA)
+  //     });
+  // }, [randomQuote, randomAuthor]);
+ 
+  let handleClick = () => {
+
     fetch("https://type.fit/api/quotes")
       .then(function (response) {
         return response.json();        
       })
       .then(function (quotes) {
+
         const randomQuoteGet = quotes[Math.floor(Math.random()*quotes.length)];
         console.log(randomQuoteGet);
 
         let randomQ = randomQuoteGet.text;
         let randomA = randomQuoteGet.author;
         
-        console.log(randomQ);
-        console.log(randomA);
-        
-        //  setRandomQuote(randomQ)
-        //  setRandomAuthor(randomA)
+         setRandomQuote(randomQ)
+         setRandomAuthor(randomA)
       });
-  }, [randomQuote, randomAuthor]);
-
- 
-  // let handleClick = (props) => {
-  //   setRandomQuote(props.randomQuoteGet.text)
-  //   setRandomAuthor(props.randomQuoteGet.author);
-  // };
+  };
 
   return (
     <div class="wrapper" id="quote-box" className="App">
@@ -49,7 +62,7 @@ function App() {
         <a id="social-quote" href="www">
           Social media
         </a>
-        <Button //onClick={handleClick} 
+        <Button onClick={handleClick} 
         id="new-quote">
           New quote
         </Button>
